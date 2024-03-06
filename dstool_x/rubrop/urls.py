@@ -3,8 +3,6 @@ from . import views
 from django.contrib.auth.views import LoginView,PasswordResetView,PasswordResetDoneView,PasswordResetConfirmView,PasswordResetCompleteView
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.static import serve
-from django.conf.urls import url
 
 urlpatterns = [
     # Authentication
@@ -49,9 +47,7 @@ urlpatterns = [
     # Upload & Download
     path('adminhub/<uuid:event_id>/storage/upload/image', views.upload_image_storage, name='upload_image_storage'),
     path('adminhub/<uuid:event_id>/storage/dowload', views.download_images_as_zip, name='download_images_as_zip'),
-    url(r'^media/?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
-    url(r'^static/?P<path>.*)$',serve,{'document_root':settings.STATIC_ROOT}),
-    
+
 ]
 
 if settings.DEBUG:
