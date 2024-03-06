@@ -1,0 +1,1 @@
+web: gunicorn dstoo_x.wsgi
